@@ -18,9 +18,10 @@ int main(){
 
     puts("\nALUNO RETIRADO");
     imprime_aluno(aluno);
+    free_aluno(aluno);
 
     free_lista(lista);
 
-    // puts("\nLISTA LIBERADA, PROGRAMA ENCERRADO\n");
+    puts("\nLISTA LIBERADA, PROGRAMA ENCERRADO\n");
     return 0;
 }

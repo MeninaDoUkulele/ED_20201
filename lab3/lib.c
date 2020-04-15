@@ -13,7 +13,7 @@ struct aluno{
 
 Aluno* inicializa_aluno(char* nome, int matricula, float cr){
     Aluno* aluno = (Aluno*) malloc(sizeof(Aluno));
-    aluno->nome = (nome);
+    aluno->nome = strdup(nome);
     aluno->matricula = matricula;
     aluno->cr = cr;
 
@@ -125,9 +125,11 @@ Aluno* retira_lista(Lista* lista, char* nome){
 }
 
 void free_lista(Lista* lista){
-    for(Celula* c = lista->primeiro; c != NULL; c = c->proximo){
+    for(Celula* c = lista->primeiro; c != lista->ultimo; c = c->proximo){
         free_aluno(c->item);
         free(c);
     }
+    free_aluno(lista->ultimo->item);
+    free(lista->ultimo);
     free(lista);
 }
